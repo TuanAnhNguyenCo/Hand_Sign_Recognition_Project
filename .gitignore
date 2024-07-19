@@ -2,3 +2,7 @@
 receivedVideo
 mmdeploy
 Weights
+log
+inference_utils/vtn_vn_sign.pt
+checkpoints
+wandb

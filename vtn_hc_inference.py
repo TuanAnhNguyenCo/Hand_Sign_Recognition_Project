@@ -5,7 +5,7 @@ import torchvision
 import yaml
 import torchvision
 import pandas as pd
-from dataset_utils import build_video_transform,get_selected_indexs,pad_index,crop_hand
+from dataset.dataset_utils import build_video_transform,get_selected_indexs,pad_index,crop_hand
 import torch
 import random
 import time
@@ -126,7 +126,7 @@ class VTNInferenceDataset():
     
     
 class Inference:
-    def __init__(self,cfg_url = 'inference_config/config.yaml',pose_model=None):
+    def __init__(self,cfg_url = 'inference_utils/config.yaml',pose_model=None):
         self.cfg_url = cfg_url
         self.device = 'cpu'
         self.__setup_preprocess_model__()
@@ -139,7 +139,7 @@ class Inference:
         self.data_cfg = self.cfg['data']
         self.vid_transform = build_video_transform(self.cfg['data'],'test')
         
-        self.sign_recognition_model = torch.jit.load("Weights/vtn_vn_sign.pt")
+        self.sign_recognition_model = torch.jit.load("inference_utils/vtn_vn_sign.pt")
         self.sign_recognition_model.eval()
         
         
@@ -211,7 +211,7 @@ class Inference:
         self.seed_everything(self.cfg['training']['random_seed'])
         print("Start Inference")
         start_time = time.time()
-        dataset = VTNInferenceDataset(video_url,'inference_config/200_sign_words.csv',self.pose_detector)
+        dataset = VTNInferenceDataset(video_url,'inference_utils/200_sign_words.csv',self.pose_detector)
         predictions = []
         for s,e in zip(dataset.start_idx,dataset.end_idx):
             clip = self.get_frames(s,e,dataset.frames,dataset.keypoints).unsqueeze(dim = 0)

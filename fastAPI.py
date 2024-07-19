@@ -18,7 +18,7 @@ def root():
 @app.post("/uploadVideo/")
 async def create_upload_file(file: UploadFile):
     print("Received Video")
-    file_path = f"receivedVideo/{file.filename}.mp4"
+    file_path = f"receivedVideo/{file.filename}"
     
  
     with open(file_path,'wb') as f:

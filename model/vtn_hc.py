@@ -1,4 +1,4 @@
-from utils import *
+from model.utils import *
 import numpy as np
 import torch
 import torch.nn as nn
@@ -38,7 +38,10 @@ class VTN_HC(nn.Module):
                                                     self.sequence_length, layer_norm=True)
         self.classifier = LinearClassifier(num_attn_features, num_classes, dropout)
         self.relu = F.relu
-        self.logit_scale = nn.Parameter(torch.ones([]) * np.log(1 / 0.07))
+        self.num_attn_features = num_attn_features
+        self.dropout = dropout
+    def reset_head(self,n_cls):
+        self.classifier = LinearClassifier(self.num_attn_features, n_cls, self.dropout)
 
     def forward(self, video = None,**kwargs):
         
@@ -47,9 +50,8 @@ class VTN_HC(nn.Module):
         z = features.view(bs,t,-1)
         zp = self.self_attention_decoder(z)
 
-        # cls
-        y = self.classifier(zp) # 1->bs is video1
-
+       
+        y = self.classifier(zp) 
         return {
             'logits':y.mean(1),
         } # train

@@ -1,7 +1,7 @@
 import os, numpy as np
 import io, torch, torchvision
 from PIL import Image
-from video_augmentation import *
+from utils.video_augmentation import *
 
 
 def build_video_transform(dataset_cfg,split):
