@@ -22,7 +22,7 @@ Run: `gunicorn fastAPI:app --bind 0.0.0.0:9091 --worker-class uvicorn.workers.Uv
 <h2>Vietnamese Sign Language dataset</h2>
 <p>Information about my dataset: </p>
 
-![Data Information](/images/KD.png)
+![Data Information](/images/data.png)
 
 <p>Link: Comming soon ...</p>
 <h2>Training</h2>
