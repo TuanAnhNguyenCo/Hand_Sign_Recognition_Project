@@ -17,9 +17,11 @@
   </li>
  </ul>
 <h2>Running Inference API</h2>
- <li> `gunicorn fastAPI:app --bind 0.0.0.0:9091 --worker-class uvicorn.workers.UvicornWorker --timeout 300`</li>
+
+ Run: `gunicorn fastAPI:app --bind 0.0.0.0:9091 --worker-class uvicorn.workers.UvicornWorker --timeout 300`</li>
 <h2>Vietnamese Sign Language dataset</h2>
  <li> Comming Soon ... </li>
 <h2>Training</h2>
-  <li> `python3 main.py --config config/vtn_hc.yaml`</li>
+
+   Run: `python3 main.py --config config/vtn_hc.yaml`
 
