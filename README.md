@@ -4,7 +4,11 @@
 <h2>Running Fast API</h2>
  <li> `gunicorn fastAPI:app --bind 0.0.0.0:9091 --worker-class uvicorn.workers.UvicornWorker --timeout 300`</li>
 <h2>Vietnamese Sign Language dataset</h2>
- <li> Comming Soon ... </li>
+<p>Information about my dataset: </p>
+
+![Data Information](/images/KD.png)
+
+<p>Link: Comming soon ...</p>
   
 
 
